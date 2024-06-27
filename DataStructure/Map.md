@@ -8,7 +8,7 @@
 ## Map
 - Map: 빠른 데이터 접근과 유연한 확장이 가능하다.
 ### Map 원리
-![img.png](img.png)
+![img.png](image/img.png)
 - bucket: Array를 의미한다.
 - hashing: Key를 범위(배열의 크기)에 맞게 적절히 겹치지 않은 index로 변경한다.
 - hash function: hashing 기능을 수행하는 함수이다.
@@ -18,7 +18,7 @@
 > 정리
 > Key -> hash function -> hash -> bucket index -> List -> Data
 
-![img.png](../map.png)
+![img.png](image/map.png)
 - Map은 dictionary 라고도 부른다.
 ## Java에서 Map 사용
 ### Hashtable
