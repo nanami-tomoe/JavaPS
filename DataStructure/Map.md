@@ -23,7 +23,7 @@
 ## Java에서 Map 사용
 ### Hashtable
 - Java에서 Map은 `Hashtable<K,V>` 클래스로 제공해준다. 관련된 문서는 [Java Api Docs](https://docs.oracle.com/javase/8/docs/api/)에 나와있다.
-- `HashTable` 클래스는 `Map` 인터페이스를 implemente한다. 
+- `HashTable` 클래스는 `Map` 인터페이스를 implement한다. 
   - 따라서 `Map<String, Integer> map = new HashMap<>()` 식으로 많이 사용한다.
 > **주요 Method**
 > - `get(Object key)`: 해당 key가 매핑되어 있는 value를 return
@@ -37,10 +37,10 @@
 >   - `Map` 인터페이스에 정의된 `keySet()` 도 가능
 - 위에 있는 메서드들 외에도 다양한 메서드들과 반환 타입이 다른 메서드들이 존재하기 때문에 [Java Api Docs](https://docs.oracle.com/javase/8/docs/api/) 을 참고하면 좋다. 
 ### HashMap
-- `HashMap<K,V>` 클래스 또한 `Map` 인터페이스를 implemente한다.
+- `HashMap<K,V>` 클래스 또한 `Map` 인터페이스를 implement한다.
 
 ### Hashtable vs HashMap
-- `Hashtable`과 `HashMap` 모두 `Map`클래스를 implemente 하기 때문에 둘다 `Map`타입으로 많이 표현한다.
+- `Hashtable`과 `HashMap` 모두 `Map`클래스를 implement 하기 때문에 둘다 `Map`타입으로 많이 표현한다.
   - ```java
     Map<String, Integer> map = new HashMap<>();
     Map<String, Integer> map = new Hashtable<>();
