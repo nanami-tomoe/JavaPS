@@ -137,7 +137,7 @@ class Solution {
             n /= 10;
         }
 
-        return list.stream().mapToInt(Integer::intValue).toArrays();
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 }
 ```
