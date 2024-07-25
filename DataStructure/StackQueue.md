@@ -294,3 +294,78 @@ class Solution {
   - 문제에 나온 예와 같습니다.
 - 예제 #2
 - 6개의 프로세스 [A, B, C, D, E, F]가 대기 큐에 있고 중요도가 [1, 1, 9, 1, 1, 1] 이므로 [C, D, E, F, A, B] 순으로 실행됩니다. 따라서 A는 5번째로 실행됩니다.
+
+```java
+import java.util.*;
+
+class Solution {
+    class Paper {
+        int priority;
+        boolean isMine;
+        
+        Paper(int p, boolean m) {
+            priority = p;
+            isMine = m;
+        }
+    }
+    
+    public int solution(int[] priorities, int location) {
+        List<Paper> queue = new LinkedList<>();
+        
+        for(int i = 0; i < priorities.length; i++) {
+            queue.add(new Paper(priorities[i], i == location));
+        }
+        
+        int answer = 0;
+        
+        while(!queue.isEmpty()) {
+            Paper now = queue.remove(0);
+            
+            boolean printable = true;
+            
+            for(Paper p : queue) {
+                if(now.priority < p.priority) {
+                    printable = false;
+                    break;
+                }
+            }
+            
+            if(!printable) {
+                queue.add(now);
+                continue;
+            }
+            
+            answer++;
+            if(now.isMine == true) return answer;
+        }
+        
+        return answer;
+    }
+}
+
+// [2, 1, (3), 2]
+// 2 [1, (3), 2]
+// [1, (3), 2, 2]
+// 1 [(3), 2, 2]
+// [(3), 2, 2, 1]
+// (3) [2, 2, 1]
+// [2, 2, 1] (3) -> 1번째
+
+// [(1), 1, 9, 1, 1, 1]
+// (1) [1, 9, 1, 1, 1]
+// [1, 9, 1, 1, 1, (1)]
+// 1 [9, 1, 1, 1, (1)]
+// [9, 1, 1, 1, (1), 1]
+// 9 [1, 1, 1, (1), 1]
+// [1, 1, 1, (1), 1] 9
+// 1 [1, 1, (1), 1] 9
+// [1, 1, (1), 1] 9 1
+// 1 [1, (1), 1] 9 1
+// [1, (1), 1] 9 1 1
+// 1 [(1), 1] 9 1 1
+// [(1), 1] 9 1 1 1
+// (1) [1] 9 1 1 1
+// (1) [1] 9 1 1 1 (1) -> 5번째
+
+// 뺀다 -> 큰 수가 있는지 확인한다 -> 지우고 있으면 다시 넣는다
+```
