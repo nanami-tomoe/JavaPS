@@ -6,3 +6,4 @@
 ![img.png](image/setTime.png)
 ### Stack/Queue
 ![img.png](image/StackQueueTime.png)
+### Linear Search
