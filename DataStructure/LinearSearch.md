@@ -62,7 +62,7 @@ int search(int[] nums, int s) {
 ```
 
 ## Java에서 Linear Search
-
+### 완전 탐색
 - `indexOf` 메서드 안에 Linear Search에 대한 알고리즘이 구현되어 있다.
 ```java
 public class Main {
@@ -79,7 +79,7 @@ public class Main {
 }
 ```
 
-- Custom Data를 사용할 때
+- **Custom Data를 사용할 때**
   - `toString()` 메서드를 오버라이딩 해서 출력값을 정의
   - `equals()` 메서드를 오버라이딩 해서 비교값을 정의
 ```java
@@ -124,7 +124,7 @@ public class Main {
 }
 ```
 
-- 랜덤값을 넣을 때
+- **랜덤값을 넣을 때**
 
 ```java
 import java.util.Random;
@@ -173,14 +173,72 @@ public class Main {
 }
 ```
 
-> `indexOf()` 메서드는 완전 탐색을 하기 때문에 시간 복잡도가 O(n)이다.
+> `indexOf()` 메서드는 **완전 탐색**을 하기 때문에 시간 복잡도가 O(n)이다.
 
-- Bianry Search를 사용하려면?
-  - `java.util` 패키지에 있는 `Collections` 클래스의 `Collections.binarySearch()` 메서드를 사용한다.
-    - 자세한 사항은 [Java Api Docs](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#binarySearch-java.util.List-T-)를 참고하자.
+### Bianry Search를 사용하려면?
+- `java.util` 패키지에 있는 `Collections` 클래스의 `Collections.binarySearch()` 메서드를 사용한다.
+  - 자세한 사항은 [Java Api Docs](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#binarySearch-java.util.List-T-)를 참고하자.
   - `binarySearch()` 메서드는 정렬된 상태에서만 사용할 수 있다.
   - 정렬된 상태가 아니라면 음수값을 반환한다.
+- `binarySearch()` 메서드는 첫번째 인자로 `List` 타입이 들어가는데 이 `List` 타입이 갖는 데이터 형은 `Comparble` 을 extends 해야 한다.
+- `Comparable<T>` 는 인터페이스이고 그 중 `CompareTo()` 메서드를 implements 해야 한다.
+```java
+public static <T> int binarySearch(List<? extends Comparable<? super T>> list, T key)
+```
 
 ```java
+import java.util.*;
 
+// Comparable<T> 인터페이스를 implements 해야 한다.
+class MyData implements Comparable<MyData> {
+  int v;
+
+  public MyData(int v) {
+    this.v = v;
+  }
+
+  @Override
+  public String toString() {
+    return "" + v;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MyData myData = (MyData) o;
+    return v == myData.v;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(v);
+  }
+
+  @Override
+  public int compareTo(MyData o) {
+    //
+    return v - o.v;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    List<MyData> list = new LinkedList<>();
+
+    // binarySearch() 메서드를 사용하려면 정렬된 상태여야 한다.
+    for (int i = 0; i < 100; i++) {
+      list.add(new MyData(i));
+    }
+
+    int index = Collections.binarySearch(list, new MyData(63));
+    System.out.println(index);
+  }
+}
 ```
+> search 는 indexOf, contains, remove 같은 곳에서 이미 구현되어 있다. : 완전 탐색
+> equals 가 제공될 필요가 있다.
+> 
+> 이진 탐색: Collections.binarySearch
+> Comparable 가 구현 되어야 한다.
+> 순서대로 정렬되어 있어야 한다.
