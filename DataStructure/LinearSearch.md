@@ -321,5 +321,20 @@ class Solution {
   'p'의 개수 1개, 'y'의 개수 2개로 다르므로 false를 return 합니다.
 ---
 ```java
+class Solution {
+  boolean solution(String s) {
 
+    String str = s.toLowerCase(); // 대문자를 소문자로 변환
+
+    int p = 0;
+    int y = 0;
+
+    for(char c : str.toCharArray()) {
+      if(c == 'p') p++;
+      if(c == 'y') y++;
+    }
+
+    return p == y;
+  }
+}
 ```
