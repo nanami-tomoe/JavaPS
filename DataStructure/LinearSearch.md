@@ -402,7 +402,6 @@ class Solution {
   }
 }
 ```
-```
 
 > `String.replaceAll('From','to')`
 > - 대상 문자열 모두를 원하는 문자 값으로 변환하는 함수

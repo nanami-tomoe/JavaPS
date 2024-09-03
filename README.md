@@ -5,7 +5,7 @@
 - [Map](https://github.com/nanami-tomoe/JavaPS/blob/master/DataStructure/Map.md)
 - [Set](https://github.com/nanami-tomoe/JavaPS/blob/master/DataStructure/Set.md)
 - [Stack/Queue](https://github.com/nanami-tomoe/JavaPS/blob/master/DataStructure/StackQueue.md)
-- Linear Search
+- [Linear Search](https://github.com/nanami-tomoe/JavaPS/blob/master/DataStructure/LinearSearch.md)
 - Sort
 - Graph/Non-Linear Search
 - Tree
