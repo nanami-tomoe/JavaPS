@@ -14,3 +14,13 @@
 ![img_4.png](image/bubble5.png)
   - 시간 복잡도: `O(n^2)`
 
+### 2. Insertion Sort
+- 값을 하나씩 옮겨가는 방식
+- 지정한 원소의 왼쪽에 있는 원소들과 비교해서 작은 것을 왼쪽에 삽입한다.
+- bubble sort 와 유사하지만 더 빠르다.
+- ex) 3, 1, 5, 2, 4
+![img.png](image/Insertion1.png)
+![img_1.png](image/Insertion2.png)
+![img_2.png](image/Insertion3.png)
+![img_3.png](image/Insertion4.png)
+  - 시간 복잡도: `O(n^2)`
