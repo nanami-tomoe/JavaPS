@@ -15,6 +15,7 @@
   - 시간 복잡도: `O(n^2)`
 
 ### 2. Insertion Sort
+- 삽입 정렬
 - 값을 하나씩 옮겨가는 방식
 - 지정한 원소의 왼쪽에 있는 원소들과 비교해서 작은 것을 왼쪽에 삽입한다.
 - bubble sort 와 유사하지만 더 빠르다.
@@ -24,3 +25,57 @@
 ![img_2.png](image/Insertion3.png)
 ![img_3.png](image/Insertion4.png)
   - 시간 복잡도: `O(n^2)`
+
+### 3. Selection Sort
+- 선택 정렬
+- 최솟값을 찾아서 최솟값을 가장 왼쪽으로 옮기는 방식
+- Bubble sort, Insertion sort 와 유사하게 모든 경우의 수를 확인
+- ex) 3, 1, 5, 2, 4
+![img.png](image/selection1.png)
+![img_1.png](image/selection2.png)
+![img_2.png](image/selection3.png)
+![img_3.png](image/selection4.png)
+![img_4.png](image/selection5.png)
+  - 시간 복잡도: `O(n^2)`
+
+### 4. Quick Sort
+- 작은 것들, 큰 것들을 나누어서 합친다.
+- pivot 값을 임의로 정해서 pivot 보다 작은 것은 왼쪽, 큰 것은 오른쪽으로 이동
+- pivot 값을 기준으로 왼쪽, 오른쪽을 나누어서 정렬하기 때문에 비교해야 할 대상이 절반씩 줄어든다.
+- ex) 3, 1, 5, 2, 4
+![img.png](image/quick.png)
+![img_1.png](image/quick1.png)
+![img_2.png](image/quick2.png)
+![img_3.png](image/quick3.png)
+![img_4.png](image/quick4.png)
+![img_5.png](image/quick5.png)
+![img.png](image/quick7.png)
+![img_1.png](image/quick8.png)
+![img_2.png](image/quick9.png)
+  ![img_6.png](image/quick6.png)
+  - 시간 복잡도: `O(nlogn)`
+
+### 5. Merge Sort
+- 병합 정렬
+- 일단 나눴다가 작은 것 부터 합친다.
+- 절반 씩 나누어서 정렬하고 합친다.
+- ex) 3, 1, 5, 2, 4
+![img_7.png](image/merge.png)
+![img_8.png](image/merge1.png)
+![img.png](image/merge2.png)
+![img_1.png](image/merge3.png)
+![img_2.png](image/merge4.png)
+![img_3.png](image/merge5.png)
+![img_4.png](image/merge6.png)
+![img_5.png](image/merge7.png)
+![img_6.png](image/merge8.png)
+![img_9.png](image/merge9.png)
+![img_10.png](image/merge10.png)
+![img_11.png](image/merge11.png)
+![img_12.png](image/merge12.png)
+![img_13.png](image/merge13.png)
+  - 시간 복잡도: `O(nlogn)`
+
+### 시간 복잡도 비교
+- 컴퓨터 이론 적으로 정렬은 Best 케이스 제외하면 nlogn 보다 빠를 순 없다.
+![img.png](image/sorttime.png)
