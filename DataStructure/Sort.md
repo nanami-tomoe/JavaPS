@@ -105,23 +105,45 @@ public class Main {
   - `sort(Comparator<? super E> c)`
 - `Comparator`는 `compare()` 함수를 구현(implement)해야 한다.
 ```java
+class MyData implements Comparable<MyData> {
+  private int v;
+
+  public MyData(int v) {
+    this.v = v;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(v); // "" + v 보다 권장
+  }
+
+  @Override
+  public int compareTo(MyData o) {
+    // 오름 차순, naturalOrder와 reverseOrder 사용 가능
+    return Integer.compare(v, o.v); // this.v - o.v 보다 권장
+  }
+}
+
 public class Main {
-    public static void main(String[] args) {
-        List<Integer> list = new LinkedList<>();
+  public static void main(String[] args) {
+    List<MyData> list = new LinkedList<>();
 
-        Random r = new Random();
-        for (int i = 0; i < 20; i++) {
-            list.add(r.nextInt(50));
-        }
-
-        list.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1; // 내림 차순, 오름 차순은 o1 - o2, 같으면 0
-            }
-        });
-
-        System.out.println(list);
+    Random r = new Random();
+    for (int i = 0; i < 20; i++) {
+      list.add(new MyData(r.nextInt(50)));
     }
+
+    list.sort(Comparator.naturalOrder()); // 오름차순
+    list.sort(Comparator.reverseOrder()); // 내림차순
+
+    System.out.println(list);
+  }
 }
 ```
+- `compareTo()` 함수를 구현하여 대소관계를 정의해 주어야 `sort()` 함수를 사용할 수 있다.
+- `sort()` 함수를 사용하여 정렬을 편하게 할 수 있다.
+  - 어떤 알고리즘을 사용할 지는 `sort()` 함수 내부에서 결정된다.
+
+> 🤔 왜 종류별로 알고리즘을 학습해야 하나?
+> 1. 다양한 알고리즘을 학습하면서 문제풀이의 접근방식을 학습할 수 있다.
+> 2. 문제를 해결하는 알고리즘은 한가지가 아니구나! 효율성이 달라지는구나! 절대적인 것은 없구나!
