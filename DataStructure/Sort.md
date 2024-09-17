@@ -79,3 +79,49 @@
 ### 시간 복잡도 비교
 - 컴퓨터 이론 적으로 정렬은 Best 케이스 제외하면 nlogn 보다 빠를 순 없다.
 ![img.png](image/sorttime.png)
+
+## Java에서의 정렬
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new LinkedList<>();
+
+        Random r = new Random();
+        for (int i = 0; i < 20; i++) {
+            list.add(r.nextInt(50));
+        }
+
+        list.sort(Comparator.naturalOrder()); // 오름차순 정렬
+        list.sort(Comparator.reverseOrder()); // 내림차순 정렬
+
+        System.out.println(list);
+    }
+}
+```
+- `sort()`는 `List` 인터페이스에 정의되어 있다.
+- `Comparator` 인터페이스를 이용해서 정렬 방법을 지정할 수 있다.
+  - `sort(Comparator<? super E> c)`
+- `Comparator`는 `compare()` 함수를 구현(implement)해야 한다.
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new LinkedList<>();
+
+        Random r = new Random();
+        for (int i = 0; i < 20; i++) {
+            list.add(r.nextInt(50));
+        }
+
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1; // 내림 차순, 오름 차순은 o1 - o2, 같으면 0
+            }
+        });
+
+        System.out.println(list);
+    }
+}
+```
